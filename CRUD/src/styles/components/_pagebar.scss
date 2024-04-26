@@ -1,0 +1,28 @@
+@use '../common/variables' as *;
+
+.page-bar {
+    width: 80%;
+    background-color: rgba(236, 238, 239, 1);
+    margin: 20px;
+    padding: 10px 15px;
+
+    & ul {
+        display: flex;
+
+        & li {
+        
+            & button {
+                margin: 0;
+                padding: 0;
+                margin-right: 5px;
+                color: $text-color-third;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .disabled {
+        color: $text-color-primary;
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,19 @@
+.form-item {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+    margin-right: 10px;
+
+    & label {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+    & input {
+        padding: 8px;
+        outline: none;
+        border: 1px solid rgba(204, 204, 204, 1);
+        border-radius: 3px;
+    }
+}

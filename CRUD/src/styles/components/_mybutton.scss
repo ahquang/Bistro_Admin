@@ -1,0 +1,10 @@
+@use '../common/index.scss' as *;
+
+button {
+    border-radius: 4px;
+    padding: 7px 12px 7px 12px;
+    color: $text-color-secondary;
+    border: none;
+    margin: 10px 5px 10px 0px;
+    cursor: pointer;
+}

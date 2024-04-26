@@ -1,0 +1,190 @@
+@use "../common/index.scss" as *;
+
+
+.cities__main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    // margin-bottom: 30px;
+
+    &__title {
+        width: 82%;
+    }
+
+    &--btn {
+        width: 82%;
+
+        & button {
+            background-color: rgba(92, 184, 92, 1);
+        }
+    }
+
+    &--span {
+        width: 82%;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &__list {
+        width: 82%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+
+
+        & th {
+            color: rgba(51, 122, 183, 1);
+            text-align: left;
+        }
+
+        & th,
+        td {
+            border: 1px solid rgb(216, 213, 213);
+            margin: 0;
+            padding: 10px;
+        }
+
+        & tr:nth-child(even) {
+            background-color: rgba(249, 249, 249, 1);
+        }
+
+        & td img {
+            padding: 3px;
+            color: rgba(47, 128, 237, 1);
+            cursor: pointer;
+            transition-duration: 0.5s;
+        }
+
+        & td img:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    &__pagination {
+        width: 82%;
+    }
+
+    &__create {
+        width: 82%;
+
+        &--form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            &--input {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 0px;
+
+                & label {
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 21px;
+                }
+
+                & input {
+                    padding: 8px;
+                    outline: none;
+                    border: 1px solid rgba(204, 204, 204, 1);
+                    border-radius: 3px;
+                }
+            }
+
+            &--button {
+
+                & button {
+                    background-color: rgba(92, 184, 92, 1);
+                }
+
+            }
+        }
+    }
+
+    &__detail {
+        width: 82%;
+
+        &__btn {
+            &__update {
+                background-color: $secondary-color;
+            }
+
+            &__delete {
+                background-color: rgba(217, 83, 79, 1);
+            }
+        }
+
+        &--table {
+            width: 100%;
+            border-collapse: collapse;
+
+            & td,
+            th {
+                border: 1px solid rgb(216, 213, 213);
+                margin: 0;
+                padding: 10px;
+            }
+
+            & tr:nth-child(odd) {
+                background-color: rgba(249, 249, 249, 1);
+            }
+
+            & th {
+                text-align: left;
+                width: 30%;
+            }
+        }
+    }
+
+    &__update {
+        width: 82%;
+
+        &--form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            &--input {
+                display: flex;
+                flex-direction: column;
+                padding: 10px 0px;
+
+                & label {
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 21px;
+                }
+
+                & input {
+                    padding: 8px;
+                    outline: none;
+                    border: 1px solid rgba(204, 204, 204, 1);
+                    border-radius: 3px;
+                }
+            }
+
+            &--btn {
+                & button {
+                    background-color: rgba(92, 184, 92, 1);
+                }
+            }
+        }
+    }
+}
+
+.category {
+    &__title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 21px;
+    }
+
+    &__option {
+        padding: 8px;
+        outline: none;
+        border: 1px solid rgba(204, 204, 204, 1);
+        border-radius: 3px;
+    }
+
+}

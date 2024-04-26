@@ -1,0 +1,33 @@
+.table-list {
+    width: 82%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+
+    & th {
+        color: rgba(51, 122, 183, 1);
+        text-align: left;
+    }
+
+    & th,
+    td {
+        border: 1px solid rgb(216, 213, 213);
+        margin: 0;
+        padding: 10px;
+    }
+
+    & tr:nth-child(even) {
+        background-color: rgba(249, 249, 249, 1);
+    }
+
+    & td img {
+        padding: 3px;
+        color: rgba(47, 128, 237, 1);
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+
+    & td img:hover {
+        transform: translateY(-5px);
+    }
+}
