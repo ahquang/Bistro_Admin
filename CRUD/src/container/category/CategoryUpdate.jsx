@@ -5,7 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Layout from "../../components/Layout/index.jsx";
 import PageBar from "../../components/PageBar/index.jsx";
 import CategoryForm from "../../components/CategoryForm/index.jsx";
-import "../../styles/pages/_cities.scss";
+import "../../styles/pages/_main.scss";
 import { getCategoryDetailAPI,updateCategoryAPI } from "../../services/categories.js";
 
 const override = {
@@ -62,9 +62,9 @@ const CategoryUpdate = () => {
 
   return (
     <Layout>
-      <div className="cities__main">
+      <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
-        <div className="cities__main__title">
+        <div className="main__title">
           <h1>Update Category</h1>
         </div>
         <CategoryForm

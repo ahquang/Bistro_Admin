@@ -1,6 +1,8 @@
 @use "../common/index.scss" as *;
 
 .nav-bar {
+    position: fixed;
+    width: 100%;
     display: flex;
     margin: 0;
     justify-content: space-between;
@@ -11,6 +13,8 @@
         margin-left: 100px;
 
         &__brand {
+            display: flex;
+            align-items: center;
             font-size: 18px;
             font-weight: 400;
             line-height: 22px;
@@ -23,14 +27,17 @@
         &__menu {
             padding: 14px 5px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
 
-            & a {
+            &  span{
+                padding: 0px 5px;
                 text-decoration: none;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 400;
                 line-height: 21px;
                 text-align: center;
-                color: $text-color-menu;
+                color: #fff;
             }
         }
     }
@@ -49,10 +56,30 @@
             color: $text-color-menu;
             padding: 14px 10px;
             cursor: pointer;
+
+            & div {
+                background-color: #fff;
+                display: flex;
+                align-items: center;
+                color: rgb(10, 10, 10);
+                padding: 5px 10px;
+                border-radius: 20px;
+                & i {
+                    padding: 0px 5px;
+                }
+                & span {
+                    font-size: 12px;
+                }
+            }
+
+            & i {
+                font-size: 24px;
+            }
         }
 
+
         &__menu:hover {
-            background-color: $hover-color;
+            // background-color: $hover-color;
             color: $text-color-secondary;
         }
     }

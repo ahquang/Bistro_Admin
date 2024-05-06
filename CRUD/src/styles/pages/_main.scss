@@ -1,11 +1,14 @@
 @use "../common/index.scss" as *;
 
 
-.cities__main {
+.main {
     display: flex;
+    margin-top: 5%;
+    margin-left: 15%;
     flex-direction: column;
     align-items: center;
     padding-bottom: 2.5rem;
+    width: 90%;
     // margin-bottom: 30px;
 
     &__title {

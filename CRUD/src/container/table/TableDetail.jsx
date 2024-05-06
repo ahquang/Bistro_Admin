@@ -4,7 +4,7 @@ import PulseLoader from "react-spinners/PulseLoader.js";
 import Layout from "../../components/Layout/index.jsx";
 import PageBar from "../../components/PageBar/index.jsx";
 import MyButton from "../../components/MyButton/index.jsx";
-import "../../styles/pages/_cities.scss";
+import "../../styles/pages/_main.scss";
 import { getTableDetailAPI, deleteTableAPI } from "../../services/tables.js";
 const override = {
   display: "block",
@@ -56,27 +56,27 @@ const TableDetail = () => {
 
   return (
     <Layout>
-      <div className="cities__main">
+      <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
-        <div className="cities__main__title">
+        <div className="main__title">
           <h1>{selectedTable.name}</h1>
         </div>
-        <div className="cities__main__detail">
-          <div className="cities__main__detail__btn">
+        <div className="main__detail">
+          <div className="main__detail__btn">
             <MyButton
-              className="cities__main__detail__btn__update"
+              className="main__detail__btn__update"
               onClick={() => navigate(`/table/update/${selectedTable._id}`)}
             >
               Update
             </MyButton>
             <MyButton
-              className="cities__main__detail__btn__delete"
+              className="main__detail__btn__delete"
               onClick={handleDeleteBtn}
             >
               Delete
             </MyButton>
           </div>
-          <table className="cities__main__detail--table">
+          <table className="main__detail--table">
             <tr>
               <th>ID</th>
               <td>{selectedTable._id}</td>

@@ -6,11 +6,11 @@ import Layout from "../../components/Layout";
 import PageBar from "../../components/PageBar";
 import MyButton from "../../components/MyButton";
 import Pagination from "../../components/Pagination";
-import detailIcon from "../../assets/visibility_24px.svg";
-import deleteIcon from "../../assets/delete_24px.svg";
-import updateIcon from "../../assets/create_24px.svg";
+import detailIcon from "../../assets/icon/visibility_24px.svg";
+import deleteIcon from "../../assets/icon/delete_24px.svg";
+import updateIcon from "../../assets/icon/create_24px.svg";
 import FormItem from "../../components/FormItem";
-import "../../styles/pages/_cities.scss";
+import "../../styles/pages/_main.scss";
 import { getTableListAPI, deleteTableAPI } from "../../services/tables";
 
 const override = {
@@ -46,7 +46,6 @@ const TableList = () => {
     await deleteTableAPI(id);
     fetchData();
   };
-  console.log(dataTable);
   const filteredItems = dataTable.filter(
     (item) =>
       item.time.toLowerCase().includes(filterText.toLowerCase().trim()) ||
@@ -84,21 +83,21 @@ const TableList = () => {
 
   return (
     <Layout>
-      <div className="cities__main">
+      <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
-        <div className="cities__main__title">
+        <div className="main__title">
           <h1>Tables</h1>
         </div>
-        <div className="cities__main--btn">
+        <div className="main--btn">
           <MyButton onClick={() => navigate("/table/create")}>
             Create table
           </MyButton>
         </div>
-        <span className="cities__main--span">
+        <span className="main--span">
           Showing {currentPage}-{totalPageCount} of {dataTable.length} items.
         </span>
         <FormItem label={"Filter"} handleOnChange={handleOnFilterChange} />
-        <table className="cities__main__list">
+        <table className="main__list">
           <thead>
             <tr>
               <th>#</th>
@@ -142,7 +141,7 @@ const TableList = () => {
             ))}
           </tbody>
         </table>
-        <div className="cities__main__pagination">
+        <div className="main__pagination">
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}

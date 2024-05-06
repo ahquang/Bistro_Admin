@@ -6,10 +6,9 @@ import Layout from "../../components/Layout/index.jsx";
 import PageBar from "../../components/PageBar/index.jsx";
 import MyButton from "../../components/MyButton/index.jsx";
 import Pagination from "../../components/Pagination/index.jsx";
-import "../../styles/pages/_cities.scss";
-import detailIcon from "../../assets/visibility_24px.svg";
-import deleteIcon from "../../assets/delete_24px.svg";
-import updateIcon from "../../assets/create_24px.svg";
+import "../../styles/pages/_main.scss";
+import detailIcon from "../../assets/icon/visibility_24px.svg";
+import deleteIcon from "../../assets/icon/delete_24px.svg";
 import { deleteOrderAPI, getOrderListAPI } from "../../services/orders.js";
 
 const override = {
@@ -68,20 +67,20 @@ const OrderList = () => {
 
   return (
     <Layout>
-      <div className="cities__main">
+      <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
-        <div className="cities__main__title">
+        <div className="main__title">
           <h1>Orders</h1>
         </div>
-        <div className="cities__main--btn">
+        <div className="main--btn">
           <MyButton onClick={() => navigate("/order/create")}>
             Create order
           </MyButton>
         </div>
-        <span className="cities__main--span">
+        <span className="main--span">
           Showing {currentPage}-{totalPageCount} of {dataOrder.length} items.
         </span>
-        <table className="cities__main__list">
+        <table className="main__list">
           <thead>
             <tr>
               <th>#</th>
@@ -120,7 +119,7 @@ const OrderList = () => {
             ))}
           </tbody>
         </table>
-        <div className="cities__main__pagination">
+        <div className="main__pagination">
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}

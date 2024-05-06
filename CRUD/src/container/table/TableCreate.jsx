@@ -20,9 +20,9 @@ const TableCreate = () => {
   };
   return (
     <Layout>
-      <div className="cities__main">
+      <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
-        <div className="cities__main__title">
+        <div className="main__title">
           <h1>Create Table</h1>
         </div>
         <TableForm onSubmit={handleAddTable}/>

@@ -4,7 +4,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Layout from "../../components/Layout/index.jsx";
 import PageBar from "../../components/PageBar/index.jsx";
 import ProductForm from "../../components/ProductForm/index.jsx";
-import "../../styles/pages/_cities.scss";
+import "../../styles/pages/_main.scss";
 import { postProductAPI } from "../../services/products.js";
 
 const ProductCreate = () => {
@@ -23,9 +23,9 @@ const ProductCreate = () => {
 
   return (
     <Layout>
-      <div className="cities__main">
+      <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
-        <div className="cities__main__title">
+        <div className="main__title">
           <h1>Create Product</h1>
         </div>
         <ProductForm onSubmit={handleAddProduct} />
