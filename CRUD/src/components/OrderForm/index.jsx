@@ -5,38 +5,13 @@ import FormItem from "../FormItem";
 
 const OrderForm = ({ selectedOrder, onSubmit }) => {
 
-  const [dataOrder, setDataOrder] = useState(
-    selectedOrder || {
-      tableNumber: "",
-      date: "",
-      time: "",
-      items: [
-        {
-          itemName: "cake",
-          itemPrice: 12,
-          amount: 2,
-        },
-        {
-          itemName: "ice-cream",
-          itemPrice: 10,
-          amount: 3,
-        },
-        {
-          itemName: "pizza",
-          itemPrice: 20,
-          amount: 1,
-        },
-      ],
-      totalItems: 6,
-      totalPrice: 74,
-    }
-  );
+  const [dataOrder, setDataOrder] = useState(selectedOrder);
 
-  const handleOnChange = (categoryKey) => (e) => {
+  const handleOnChange = (orderKey) => (e) => {
     const newValue = e.target.value;
-    setDataOrder({ ...dataOrder, [categoryKey]: newValue });
+    setDataOrder({ ...dataOrder, [orderKey]: newValue });
   };
-
+  console.log(dataOrder);
   const handleClickSubmit = (e) => {
     e.preventDefault();
     onSubmit(dataOrder);
@@ -45,7 +20,7 @@ const OrderForm = ({ selectedOrder, onSubmit }) => {
   return (
     <div className="my-form">
       <form className="my-form--form" onSubmit={handleClickSubmit}>
-        <FormItem
+        {/* <FormItem
           label={"Table Number"}
           type="number"
           handleOnChange={handleOnChange("tableNumber")}
@@ -95,8 +70,16 @@ const OrderForm = ({ selectedOrder, onSubmit }) => {
           handleOnChange={handleOnChange("totalPrice")}
           value={dataOrder.totalPrice}
           required
-        />
-
+        /> */}
+        <select
+          className="order__option"
+          value={dataOrder.status}
+          onChange={handleOnChange("status")}
+          required
+        >
+          <option>Preparing</option>
+          <option>Completed</option>
+        </select>
         <div className="my-form--form--button">
           <MyButton>Save</MyButton>
         </div>

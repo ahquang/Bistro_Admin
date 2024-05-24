@@ -8,6 +8,7 @@ const CategoryForm = ({ selectedCategory, onSubmit }) => {
         selectedCategory || {
           name: "",
           description: "",
+          icon: "",
         }
       );
     
@@ -34,6 +35,12 @@ const CategoryForm = ({ selectedCategory, onSubmit }) => {
               label={"Description"}
               handleOnChange={handleOnChange("description")}
               value={dataCategory.description}
+              required
+            />
+            <FormItem
+              label={"Category Icon"}
+              handleOnChange={handleOnChange("icon")}
+              value={dataCategory.icon}
               required
             />
             <div className="my-form--form--button">

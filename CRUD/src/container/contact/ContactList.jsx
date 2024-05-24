@@ -1,18 +1,15 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { DEFAULT_PAGE_SIZE } from "../../constants/index.js";
 import { useNavigate } from "react-router-dom";
+import { DEFAULT_PAGE_SIZE } from "../../constants";
 import PulseLoader from "react-spinners/PulseLoader.js";
-import Layout from "../../components/Layout/index.jsx";
-import PageBar from "../../components/PageBar/index.jsx";
-import MyButton from "../../components/MyButton/index.jsx";
-import Pagination from "../../components/Pagination/index.jsx";
-import "../../styles/pages/_main.scss";
+import Layout from "../../components/Layout";
+import PageBar from "../../components/PageBar";
+import MyButton from "../../components/MyButton";
+import Pagination from "../../components/Pagination";
+import detailIcon from "../../assets/icon/visibility_24px.svg";
 import deleteIcon from "../../assets/icon/delete_24px.svg";
-import updateIcon from "../../assets/icon/create_24px.svg";
-import {
-  deleteCategoryAPI,
-  getCategoryListAPI,
-} from "../../services/categories.js";
+import "../../styles/pages/_main.scss";
+import { getContactListAPI, deleteContactAPI } from "../../services/contacts";
 
 const override = {
   display: "block",
@@ -20,14 +17,21 @@ const override = {
   margin: "100px auto",
 };
 
-const CategoryList = () => {
+const ContactList = () => {
   const navigate = useNavigate();
-  const [dataCategory, setDataCategory] = useState([]);
+  const [dataContact, setDataContact] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
 
+  const page = ["Home /", "Contacts"];
+
+  const handleClickPageBar = (e) => {
+    navigate("/contact/list");
+  };
+
   const fetchData = async () => {
-    const categoryData = await getCategoryListAPI();
-    setDataCategory(categoryData);
+    const dataAPI = await getContactListAPI();
+    setDataContact(dataAPI);
     setLoading(false);
   };
 
@@ -35,24 +39,18 @@ const CategoryList = () => {
     fetchData();
   }, []);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const page = ["Home /", "Categories"];
-
-  const handleClickPageBar = (e) => {
-    navigate("/category/list");
-  };
-
-  const handleDelete = async (id) => {
-    await deleteCategoryAPI(id);
+  const handleDeleteContact = async (id) => {
+    await deleteContactAPI(id);
     fetchData();
   };
-  const totalPageCount = Math.ceil(dataCategory.length / DEFAULT_PAGE_SIZE);
+ 
+  const totalPageCount = Math.ceil(dataContact.length / DEFAULT_PAGE_SIZE);
 
-  const currentTableData = useMemo(() => {
+  const currentContactData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * DEFAULT_PAGE_SIZE;
     const lastPageIndex = firstPageIndex + DEFAULT_PAGE_SIZE;
-    return dataCategory.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, dataCategory]);
+    return dataContact.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, dataContact]);
 
   if (loading) {
     return (
@@ -67,50 +65,45 @@ const CategoryList = () => {
       </Layout>
     );
   }
-  
+
   return (
     <Layout>
       <div className="main">
         <PageBar page={page} handleOnClick={handleClickPageBar} />
         <div className="main__title">
-          <h1>Categories</h1>
-        </div>
-        <div className="main--btn">
-          <MyButton onClick={() => navigate("/category/create")}>
-            Create category
-          </MyButton>
+          <h1>Contacts</h1>
         </div>
         <span className="main--span">
-          Showing {currentPage}-{totalPageCount} of {dataCategory.length} items.
+          Showing {currentPage}-{totalPageCount} of {dataContact.length} items.
         </span>
         <table className="main__list">
           <thead>
             <tr>
               <th>#</th>
-              <th>Category Name</th>
-              <th>Description</th>
-              <th>Category Icon</th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Subject</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {currentTableData.map((category, index) => (
+            {currentContactData.map((contact, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
-                <td>{category.name}</td>
-                <td>{category.description}</td>
-                <td><img className="main__list__image" src={category.icon} alt="" /></td>
+                <td>{contact.name}</td>
+                <td>{contact.address}</td>
+                <td>{contact.subject}</td>
                 <td>
                   <img
-                    src={updateIcon}
+                    src={detailIcon}
                     alt=""
-                    onClick={() => navigate(`/category/update/${category._id}`)}
+                    onClick={() => navigate(`/contact/detail/${contact._id}`)}
                   />
                   <img
                     src={deleteIcon}
                     alt=""
                     onClick={() => {
-                      handleDelete(category._id);
+                      handleDeleteContact(contact._id);
                     }}
                   />
                 </td>
@@ -122,7 +115,7 @@ const CategoryList = () => {
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}
-            totalCount={dataCategory.length}
+            totalCount={dataContact.length}
             pageSize={DEFAULT_PAGE_SIZE}
             onPageChange={(page) => setCurrentPage(page)}
           />
@@ -132,4 +125,4 @@ const CategoryList = () => {
   );
 };
 
-export default CategoryList;
+export default ContactList;

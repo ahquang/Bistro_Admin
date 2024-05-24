@@ -1,4 +1,5 @@
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/categories`
+import { BASE_URL_CATEGORIES } from "../constants";
+const baseUrl = `${BASE_URL_CATEGORIES}/categories`
 
 export const getCategoryListAPI = async () => {
   const requestOptions = {

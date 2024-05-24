@@ -1,4 +1,5 @@
-const baseUrl = `${process.env.REACT_APP_BASE_URL}/products`
+import { BASE_URL_PRODUCTS } from "../constants";
+const baseUrl = `${BASE_URL_PRODUCTS}/products`
 
 export const getProductListAPI = async () => {
   const requestOptions = {

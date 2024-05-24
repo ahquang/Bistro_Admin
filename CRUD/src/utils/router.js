@@ -12,10 +12,12 @@ import TableUpdate from "../container/table/TableUpdate";
 import CategoryList from "../container/category/CategoryList";
 import CategoryCreate from "../container/category/CategoryCreate";
 import CategoryUpdate from "../container/category/CategoryUpdate";
-import OrderCreate from "../container/order/OrderCreate";
 import OrderList from "../container/order/OrderList";
 import OrderDetail from "../container/order/OrderDetail";
 import { Protected } from "../components/Protected";
+import ContactDetail from "../container/contact/ContactDetail";
+import ContactList from "../container/contact/ContactList";
+import OrderUpdate from "../container/order/OrderUpdate";
 
 export const router = createBrowserRouter([
   {
@@ -123,14 +125,6 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: "/order/create",
-    element: (
-      <Protected>
-        <OrderCreate />
-      </Protected>
-    ),
-  },
-  {
     path: "/order/list",
     element: (
       <Protected>
@@ -146,4 +140,28 @@ export const router = createBrowserRouter([
       </Protected>
     ),
   },
+  {
+    path: "/order/update/:id",
+    element: (
+      <Protected>
+        <OrderUpdate />
+      </Protected>
+    ),
+  },
+  {
+    path: "/contact/detail/:id",
+    element: (
+      <Protected>
+        <ContactDetail />
+      </Protected>
+    ),
+  },
+  {
+    path: "/contact/list",
+    element: (
+      <Protected>
+        <ContactList />
+      </Protected>
+    ),
+  }
 ]);

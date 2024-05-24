@@ -1,7 +1,7 @@
-import { BASE_URL_TABLES } from "../constants";
-const baseURL = `${BASE_URL_TABLES}/tables`;
+import { BASE_URL_CONTACT } from "../constants";
+const baseURL = `${BASE_URL_CONTACT}/contacts`;
 
-export const getTableListAPI = async () => {
+export const getContactListAPI = async () => {
     const requestOptions = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -15,7 +15,7 @@ export const getTableListAPI = async () => {
     }
   };
   
-  export const deleteTableAPI = async (id) => {
+  export const deleteContactAPI = async (id) => {
     const requestOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -23,7 +23,7 @@ export const getTableListAPI = async () => {
     await fetch(`${baseURL}/${id}`, requestOptions);
   };
   
-  export const postTableAPI = async (data) => {
+  export const postContactAPI = async (data) => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -35,7 +35,7 @@ export const getTableListAPI = async () => {
       .catch((error) => console.log(error));
   };
   
-  export const updateTableAPI = async (data, id) => {
+  export const updateContactAPI = async (data, id) => {
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -47,7 +47,7 @@ export const getTableListAPI = async () => {
       .catch((error) => console.log(error));
   };
   
-  export const getTableDetailAPI = async (id) => {
+  export const getContactDetailAPI = async (id) => {
     const requestOptions = {
       method: "GET",
       headers: { "Content-Type": "application/json" },

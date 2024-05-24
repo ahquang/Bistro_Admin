@@ -62,6 +62,10 @@
         & td img:hover {
             transform: translateY(-5px);
         }
+
+        &__image {
+            width: 2.5rem;
+        }
     }
 
     &__pagination {

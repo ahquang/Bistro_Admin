@@ -43,6 +43,7 @@ const OrderList = () => {
     await deleteOrderAPI(id);
     fetchData();
   };
+  console.log(dataOrder);
   const totalPageCount = Math.ceil(dataOrder.length / DEFAULT_PAGE_SIZE);
 
   const currentTableData = useMemo(() => {
@@ -72,11 +73,6 @@ const OrderList = () => {
         <div className="main__title">
           <h1>Orders</h1>
         </div>
-        <div className="main--btn">
-          <MyButton onClick={() => navigate("/order/create")}>
-            Create order
-          </MyButton>
-        </div>
         <span className="main--span">
           Showing {currentPage}-{totalPageCount} of {dataOrder.length} items.
         </span>
@@ -99,8 +95,8 @@ const OrderList = () => {
                 <td>{order.tableNumber}</td>
                 <td>{order.date}</td>
                 <td>{order.time}</td>
-                <td>{order.totalItems}</td>
-                <td>{order.totalPrice}$</td>
+                <td>{order.itemCount}</td>
+                <td>{order.totalAmount}$</td>
                 <td>
                   <img
                     src={detailIcon}
