@@ -48,11 +48,8 @@ const TableList = () => {
   };
   const filteredItems = dataTable.filter(
     (item) =>
-      item.time.toLowerCase().includes(filterText.toLowerCase().trim()) ||
-      item.name.toLowerCase().includes(filterText.toLowerCase().trim()) ||
-      item.date.toLowerCase().includes(filterText.toLowerCase().trim()) ||
-      item.phone.toLowerCase().includes(filterText.toLowerCase().trim()) ||
-      item.totalPerson.toLowerCase().includes(filterText.toLowerCase().trim()) 
+      item.time.includes(filterText.trim()) ||
+      item.date.includes(filterText.trim()) 
   );
 
   const handleOnFilterChange = (e) => {
@@ -88,15 +85,12 @@ const TableList = () => {
         <div className="main__title">
           <h1>Tables</h1>
         </div>
-        <div className="main--btn">
-          <MyButton onClick={() => navigate("/table/create")}>
-            Create table
-          </MyButton>
-        </div>
         <span className="main--span">
           Showing {currentPage}-{totalPageCount} of {dataTable.length} items.
         </span>
-        <FormItem label={"Filter"} handleOnChange={handleOnFilterChange} />
+        <div className="main__filter">
+        <FormItem label={"Filter By Date & Time"} handleOnChange={handleOnFilterChange} />
+        </div>
         <table className="main__list">
           <thead>
             <tr>

@@ -43,7 +43,7 @@ const OrderUpdate = () => {
       Object.entries(updatedOrder).slice(1)
     );
     updateOrderAPI(selectedOrderRemoveId, selectedOrder._id);
-    navigate("/order/list");
+    navigate(`/order/detail/${selectedOrder._id}`);
   };
 
   if (loading) {

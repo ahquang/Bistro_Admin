@@ -5,7 +5,6 @@ import ProductCreate from "../container/product/ProductCreate";
 import ProductDetail from "../container/product/ProductDetail";
 import ProductList from "../container/product/ProductList";
 import ProductUpdate from "../container/product/ProductUpdate";
-import TableCreate from "../container/table/TableCreate";
 import TableList from "../container/table/TableList";
 import TableDetail from "../container/table/TableDetail";
 import TableUpdate from "../container/table/TableUpdate";
@@ -65,14 +64,6 @@ export const router = createBrowserRouter([
     element: (
       <Protected>
         <ProductDetail />
-      </Protected>
-    ),
-  },
-  {
-    path: "/table/create",
-    element: (
-      <Protected>
-        <TableCreate />
       </Protected>
     ),
   },

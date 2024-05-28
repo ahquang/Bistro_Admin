@@ -30,6 +30,10 @@
         line-height: 20px;
     }
 
+    &__filter {
+        width: 82%;
+        display: flex;
+    }
     &__list {
         width: 82%;
         border-collapse: collapse;

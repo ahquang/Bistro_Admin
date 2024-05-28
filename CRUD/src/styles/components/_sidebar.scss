@@ -1,58 +1,63 @@
 .sidebar {
+    margin: 0;
+    padding: 0;
     position: fixed;
-    top: 9%;
+    top: 9.5%;
     width: 200px;
     height: 100%;
     background-color: #262626;
     color: #fff;
 }
 
-.sidebar-toggle {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    cursor: pointer;
-}
+// .sidebar-toggle {
+//     display: flex;
+//     align-items: center;
+//     padding: 10px;
+//     cursor: pointer;
+// }
 
 .sidebar-toggle img {
     padding: 0px 5px;
 }
 
 .menu {
+    padding: 0;
+    margin: 0;
     display: block;
-    height: 0;
-    visibility: hidden;
-    overflow-y: auto;
-    opacity: 0;
-    transition: .5s ease-in-out all;
-    /* Enable scrolling */
-}
-
-.menu.visible {
     height: fit-content;
     display: block;
     visibility: visible;
-    opacity: 1;
     transform: translateY(5px);
-    transition: .5s ease-in-out all;
+    // transition: .5s ease-in-out all;
+    /* Enable scrolling */
 }
 
-.menu ul {
+// .menu.visible {
+//     height: fit-content;
+//     display: block;
+//     visibility: visible;
+//     opacity: 1;
+//     transform: translateY(5px);
+//     transition: .5s ease-in-out all;
+// }
+
+.menu {
     list-style-type: none;
     padding: 0;
 }
 
-.menu ul li {
+.menu li {
+    margin: 0;
     padding: 10px;
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
 }
 
-.menu ul li:hover {
+.menu li:hover {
     background-color: #555;
     transform: translateX(-5px);
 }
 
-.menu ul a{
+.menu a{
     text-decoration: none;
     color: #fff;
     padding: 0px 20px;

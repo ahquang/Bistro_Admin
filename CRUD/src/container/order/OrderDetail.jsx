@@ -70,12 +70,6 @@ const OrderDetail = () => {
             >
               Update Status
             </MyButton>
-            <MyButton
-              className="main__detail__btn__delete"
-              onClick={handleDeleteBtn}
-            >
-              Delete
-            </MyButton>
           </div>
           <table className="main__detail--table">
             <tr>
@@ -85,6 +79,10 @@ const OrderDetail = () => {
             <tr>
               <th>Table number</th>
               <td>{selectedOrder.tableNumber}</td>
+            </tr>
+            <tr>
+              <th>Order type</th>
+              <td>{selectedOrder.orderType}</td>
             </tr>
             <tr>
               <th>Date</th>

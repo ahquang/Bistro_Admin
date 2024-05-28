@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import dashboardIcon from "../../assets/icon/dashboard.png";
 import "../../styles/components/_sidebar.scss";
 
 const Sidebar = () => {
-  const [menuVisible, setMenuVisible] = useState(false);
-
   const [activeIndex, setActiveIndex] = useState(() => {
     const initIndex = window.location.pathname.includes("product")
       ? 0
@@ -21,40 +19,18 @@ const Sidebar = () => {
     return initIndex;
   });
 
-  useEffect(() => {
-    setMenuVisible(() =>
-      window.location.pathname.includes("product")
-        ? true
-        : window.location.pathname.includes("category")
-        ? true
-        : window.location.pathname.includes("table")
-        ? true
-        : window.location.pathname.includes("order")
-        ? true
-        : window.location.pathname.includes("contact")
-        ? true
-        : false
-    );
-  }, []);
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
-  };
+  
   return (
     <div className="sidebar">
-      <div className="sidebar-toggle" onClick={toggleMenu}>
-        <img src={dashboardIcon} alt="icon" />
-        <span>Dashboard</span>
-      </div>
-      <div className={`menu ${menuVisible ? "visible" : ""}`}>
-        <ul>
+        <ul className="menu">
           <li className={activeIndex === 0 ? "active" : ""}>
             <Link to={"/product/list"} onClick={() => setActiveIndex(0)}>
-              Product
+            <i class="bi bi-backpack4"></i> Product
             </Link>
           </li>
           <li className={activeIndex === 1 ? "active" : ""}>
             <Link to={"/category/list"} onClick={() => setActiveIndex(1)}>
-              Category
+            <i class="bi bi-tags"></i> Category
             </Link>
           </li>
           <li className={activeIndex === 2 ? "active" : ""}>
@@ -62,7 +38,7 @@ const Sidebar = () => {
               to={"/table/list"}
               onClick={() => setActiveIndex(2)}
             >
-              Table
+              <i class="bi bi-file-earmark-spreadsheet"></i> Table
             </Link>
           </li>
           <li className={activeIndex === 3 ? "active" : ""}>
@@ -70,7 +46,7 @@ const Sidebar = () => {
               to={"/order/list"}
               onClick={() => setActiveIndex(3)}
             >
-              Order
+              <i class="bi bi-newspaper"></i> Order
             </Link>
           </li>
           <li className={activeIndex === 4 ? "active" : ""}>
@@ -78,23 +54,10 @@ const Sidebar = () => {
               to={"/contact/list"}
               onClick={() => setActiveIndex(4)}
             >
-              Contact
+              <i class="bi bi-envelope-paper"></i> Contact
             </Link>
           </li>
         </ul>
-      </div>
-      <div className="sidebar-toggle">
-        <img src={dashboardIcon} alt="icon" />
-        <span>Analytics</span>
-      </div>
-      <div className="sidebar-toggle">
-        <img src={dashboardIcon} alt="icon" />
-        <span>Datagrid</span>
-      </div>
-      <div className="sidebar-toggle">
-        <img src={dashboardIcon} alt="icon" />
-        <span>Contact</span>
-      </div>
     </div>
   );
 };

@@ -4,12 +4,11 @@ import { useNavigate } from "react-router-dom";
 import PulseLoader from "react-spinners/PulseLoader.js";
 import Layout from "../../components/Layout/index.jsx";
 import PageBar from "../../components/PageBar/index.jsx";
-import MyButton from "../../components/MyButton/index.jsx";
+import FormItem from "../../components/FormItem/index.jsx";
 import Pagination from "../../components/Pagination/index.jsx";
 import "../../styles/pages/_main.scss";
 import detailIcon from "../../assets/icon/visibility_24px.svg";
-import deleteIcon from "../../assets/icon/delete_24px.svg";
-import { deleteOrderAPI, getOrderListAPI } from "../../services/orders.js";
+import { getOrderListAPI } from "../../services/orders.js";
 
 const override = {
   display: "block",
@@ -20,6 +19,7 @@ const override = {
 const OrderList = () => {
   const navigate = useNavigate();
   const [dataOrder, setDataOrder] = useState([]);
+  const [filterText, setFilterText] = useState("");
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
@@ -38,19 +38,24 @@ const OrderList = () => {
   const handleClickPageBar = (e) => {
     navigate("/");
   };
-
-  const handleDelete = async (id) => {
-    await deleteOrderAPI(id);
-    fetchData();
-  };
   console.log(dataOrder);
+  const filteredItems = dataOrder.filter(
+    (item) =>
+      item.time.includes(filterText.trim()) ||
+      item.date.includes(filterText.trim()) 
+  );
+
+  const handleOnFilterChange = (e) => {
+    setFilterText(e.target.value);
+  };
+
   const totalPageCount = Math.ceil(dataOrder.length / DEFAULT_PAGE_SIZE);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * DEFAULT_PAGE_SIZE;
     const lastPageIndex = firstPageIndex + DEFAULT_PAGE_SIZE;
-    return dataOrder.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, dataOrder]);
+    return filteredItems.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage, filteredItems]);
 
   if (loading) {
     return (
@@ -76,6 +81,9 @@ const OrderList = () => {
         <span className="main--span">
           Showing {currentPage}-{totalPageCount} of {dataOrder.length} items.
         </span>
+        <div className="main__filter">
+        <FormItem label={"Filter"} handleOnChange={handleOnFilterChange} />
+        </div>
         <table className="main__list">
           <thead>
             <tr>
@@ -103,13 +111,6 @@ const OrderList = () => {
                     alt=""
                     onClick={() => navigate(`/order/detail/${order._id}`)}
                   />
-                  <img
-                    src={deleteIcon}
-                    alt=""
-                    onClick={() => {
-                      handleDelete(order._id);
-                    }}
-                  />
                 </td>
               </tr>
             ))}
@@ -119,7 +120,7 @@ const OrderList = () => {
           <Pagination
             className="pagination-bar"
             currentPage={currentPage}
-            totalCount={dataOrder.length}
+            totalCount={filteredItems.length}
             pageSize={DEFAULT_PAGE_SIZE}
             onPageChange={(page) => setCurrentPage(page)}
           />
